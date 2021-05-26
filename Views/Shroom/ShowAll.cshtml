@@ -1,0 +1,48 @@
+@model IEnumerable<exercise5v2.Models.MushroomModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Mushroom Database";
+}
+<h2>Listed Mushroom</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Scientific Name</th>
+            <th>Common Name</th>
+            <th>Biome </th>
+            <th>Psychoactivity</th>
+            <th>Consumable</th>
+            <th>Mushroom's Color</th>
+            <th>Cap's Shape</th>
+            <th>Hymenophore</th>
+            <th>Spore Print Color</th>
+            <th>Gill's Color</th>
+            <th>Veil Description</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var shroom in Model)
+        {
+            <tr>
+                <td>@shroom.ScientificName</td>
+                <td>@shroom.CommonName</td>
+                <td>@shroom.Biome</td>
+                <td>@shroom.isPsychoactive</td>
+                <td>@shroom.isPoisonous</td>
+                <td>@shroom.Color</td>
+                <td>@shroom.CapShape</td>
+                <td>@shroom.Hymenophore</td>
+                <td>@shroom.SporePrintColor</td>
+                <td>@shroom.GillColor</td>
+                <td>@shroom.Veil</td>
+                <td><a class="text-info" asp-area="" asp-controller="Shroom" asp-action="Edit" asp-route-id=@shroom.ScientificName>EDIT</a></td>
+                <td><a class="text-danger" asp-area="" asp-controller="Shroom" asp-action="Delete" asp-route-id=@shroom.ScientificName>DELETE</a><td/>
+
+            </tr>
+        }
+    </tbody>
+</table>

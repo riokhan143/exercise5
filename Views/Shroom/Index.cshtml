@@ -1,0 +1,237 @@
+﻿@model exercise5v2.Models.MushroomModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="POST" asp-action="registermushroom" >
+                @* <input type="hidden" asp-for="ScientificName" /> *@
+                <div class="form-group">
+                        <label asp-for="ScientificName" class="control-label">Scientific Name</label>
+                        <input asp-for="ScientificName" class="form-control" />
+                        <span asp-validation-for="ScientificName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="CommonName" class="control-label">Common Name</label>
+                        <input asp-for="CommonName" class="form-control" />
+                        <span asp-validation-for="CommonName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="Biome" class="control-label"></label>
+                        <input asp-for="Biome" class="form-control" />
+                        <span asp-validation-for="Biome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="isPsychoactive" class="control-label"> Psychoactivity</label>
+
+                        <span class="text-danger" asp-validation-for="isPsychoactive"></span>  </br>
+                                @Html.RadioButtonFor(m => m.isPsychoactive,true) Psychoactive </br>
+                                @Html.RadioButtonFor(m => m.isPsychoactive,false) Non-psychoactive</br>
+                        <span asp-validation-for="isPsychoactive" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="isPoisonous" class="control-label"> Consumable </label></br>
+                                @Html.RadioButtonFor(m => m.isPoisonous,false) Poisonous</br>
+                                @Html.RadioButtonFor(m => m.isPoisonous,true) Edible</br>
+                        <span asp-validation-for="isPoisonous" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                        <label asp-for="Color" class="control-label">Mushroom's Color</label>
+                        <input asp-for="Color" class="form-control" />
+                        <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="CapShape" class="control-label">Cap's Shape</label>
+                        <input asp-for="CapShape" class="form-control" />
+                        <span asp-validation-for="CapShape" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="Hymenophore" class="control-label"></label></br>
+                                @Html.RadioButtonFor(m => m.Hymenophore,"Gills") Gills</br>
+                                @Html.RadioButtonFor(m => m.Hymenophore,"Pores") Pores</br>
+                                @Html.RadioButtonFor(m => m.Hymenophore,"Teeth") Teeth
+                        <span asp-validation-for="Hymenophore" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="SporePrintColor" class="control-label">Spore Print Color</label>
+                        <input asp-for="SporePrintColor" class="form-control" />
+                        <span asp-validation-for="SporePrintColor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="GillColor" class="control-label">Gill's Color</label>
+                        <input asp-for="GillColor" class="form-control" />
+                        <span asp-validation-for="GillColor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label asp-for="Veil" class="control-label"></label>
+                        <input asp-for="Veil" class="form-control" />
+                        <span asp-validation-for="Veil" class="text-danger"></span>
+                </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@*<table cellpadding="10" cellspacing="0" border="0">
+        <tbody>
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Scientific Name</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>             
+                                <div class="form-group">       
+                                        <input asp-for="ScientificName" class="text-danger" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="ScientificName"></span>
+                                </div>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Common Name</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                <div>
+                                        <input asp-for="CommonName" class="form-control" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="CommonName"></span>
+                                </div>
+                        </td>
+                </tr>  
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Biome</label>
+                        </td>
+                </tr>     
+                <tr>
+                        <td>                    
+                                <div>
+                                        <input asp-for="Biome" class="form-control" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="Biome"></span>
+                                </div>
+                        </td>
+                </tr> 
+          
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Cap's Shape</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                <div>
+                                        <input asp-for="CapShape" class="form-control" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="CapShape"></span>
+                                </div>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Is this Mushroom Psychoactive? </label>
+                                <div>
+                                        <span class="text-danger" asp-validation-for="isPsychoactive"></span>
+                                </div>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                  
+                                @Html.RadioButtonFor(m => m.isPsychoactive,true) Psychoactive 
+                        </td>
+                        <td>                    
+                                @Html.RadioButtonFor(m => m.isPsychoactive,false) Non-psychoactive
+                        </td>                        
+                </tr>
+ CHARACTERISTIC  
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Is this safe to eat? </label>
+                                <div>
+                                        <span class="text-danger" asp-validation-for="isPoisonous"></span>
+                                </div>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                @Html.RadioButtonFor(m => m.isPoisonous,false) Poisonous</br>
+                                @Html.RadioButtonFor(m => m.isPoisonous,true) Edible
+                        </td>
+                </tr>   
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Hymenophore</label>
+                                <div>
+                                        <span class="text-danger" asp-validation-for="Hymenophore"></span>
+                                </div>
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                                @Html.RadioButtonFor(m => m.Hymenophore,"Gills") Gills</br>
+                                @Html.RadioButtonFor(m => m.Hymenophore,"Pores") Pores</br>
+                                @Html.RadioButtonFor(m => m.Hymenophore,"Teeth") Teeth
+                        </td>                                                  
+                </tr> 
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Veil</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                                <div>
+                                        <input asp-for="Veil" class="form-control" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="Veil"></span>
+                                </div>
+                        </td>
+                </tr> 
+
+
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Gill's Color</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                <div>
+                                        <input asp-for="GillColor" class="form-control" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="GillColor"></span>
+                                </div>
+                        </td>
+                </tr> 
+
+
+
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Spore Print Color</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                <div>
+                                        <input asp-for="SporePrintColor" class="form-control" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="SporePrintColor"></span>
+                                </div>
+                        </td>
+                </tr> 
+
+
+                <tr>
+                        <td>                    
+                                <label class="form-label" >Mushroom Color</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>                    
+                                <div>
+                                        <input asp-for="Color" class="form-control" size="50px"/>
+                                        <span class="text-danger" asp-validation-for="Color"></span>
+                                </div>
+                        </td>
+                </tr> 
+                <td>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                </td>
+        </tbody>    
+</table>*@
